@@ -12,7 +12,10 @@ sns.set_theme(style="whitegrid")
 def coerce_numeric_columns(df: pd.DataFrame) -> pd.DataFrame:
     out = df.copy()
     for col in out.columns:
-        out[col] = pd.to_numeric(out[col], errors="ignore")
+        try:
+            out[col] = pd.to_numeric(out[col])
+        except (ValueError, TypeError):
+            pass
     return out
 
 

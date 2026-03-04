@@ -33,8 +33,11 @@ class DatosGovClient:
         return normalize_records(payload)
 
 
-def normalize_records(payload: dict[str, Any]) -> pd.DataFrame:
+def normalize_records(payload: dict[str, Any] | list[Any]) -> pd.DataFrame:
     """Convierte distintas formas de respuesta JSON de Socrata a DataFrame."""
+
+    if isinstance(payload, list):
+        return pd.DataFrame(payload)
 
     rows = payload.get("results") or payload.get("data") or []
     if not rows:

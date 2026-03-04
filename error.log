@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "D:\flutter projects\analisis\scripts\download_data.py", line 28, in <module>
+    main()
+    ~~~~^^
+  File "D:\flutter projects\analisis\scripts\download_data.py", line 19, in main
+    df = client.fetch_dataframe(limit=args.limit, offset=args.offset)
+  File "D:\flutter projects\analisis\src\electrocampos_api\client.py", line 33, in fetch_dataframe
+    return normalize_records(payload)
+  File "D:\flutter projects\analisis\src\electrocampos_api\client.py", line 39, in normalize_records
+    rows = payload.get("results") or payload.get("data") or []
+           ^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'get'
